@@ -1,17 +1,24 @@
-* IntroductionOne API to return all market summaryOne API which accepts market as query param and gives the response
+Introduction:
+* One API will return all market summary.
+* One API which accepts market as query param and gives the response.
 
-* Requirements-
+Requirements:
 Python 3.0
 Flask
 requests
 pytest
 
-* module exaplaination
+Module exaplaination:
 __init__.py is the staring point of the program execution
 
-test_sky.py consists of the testcases
-steps:entry point of the project = __init__.py file
+Steps to execute:
+entry point of the project = __init__.py file
 
-pip install requiremenst.txt-run __init__.py file
+pip install requiremenst.txt
 
-Testing module:-pytest test_sky.py-command : pytest test_sky.py
+run __init__.py file
+
+Testing module:
+pytest test_sky.py
+command : pytest test_sky.py
+
