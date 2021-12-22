@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Crypto API
+  description: A simple API to illustrate OpenAPI concepts
+
+servers:
+  - url: https://api.bittrex.com/api/v1.1/public/
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
+paths:
+  /getmarketsummaries:
+    get:
+      description: Returns crypto market data
+      operationId: index
+      responses:
+        '200':
+          description: Successfully returned crypto market data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - username
+                  properties:
+                    MarketName:
+                      type: string
+                      example: BTC-LTC
+                    High:
+                      type: integer
+                      example: 0.00319607
+                    Low:
+                      type: integer
+                      example: 0.00307519
+                    Volume:
+                      type: integer
+                      example: 5127.86994749
+                    Last:
+                      type: integer
+                      example: 0.00307519
+                    BaseVolume:
+                      type: integer
+                      example: 16.09571622
+                    TimeStamp:
+                      type: string
+                      example: "2021-12-17T14:13:04.913"
+                    Bid:
+                      type: integer
+                      example: 0.00308097
+                    Ask:
+                      type: integer
+                      example: 0.00308451
+                    OpenBuyOrders:
+                      type: integer
+                      example: 602
+                    OpenSellOrders:
+                      type: integer
+                      example: 3343
+                    PrevDay:
+                      type: integer
+                      example: 0.00317776
+                    Created:
+                      type: string
+                      example: "2014-02-13T00:00:00"  
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+      x-openapi-router-controller: routes.Sky
+                    
+  /getmarketsummary:
+    get:
+      security:
+        - BasicAuth: []
+      description: Returns crypto market data
+      operationId: get_all_data
+      parameters: 
+      - name: "market"
+        in: "query"
+        required: True
+        schema:
+          type: string 
+          pattern: '\D{3}.\D{3}'
+      responses:
+        '200':
+          description: Successfully returned crypto market data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - username
+                  properties:
+                    MarketName:
+                      type: string
+                      example: BTC-LTC
+                    High:
+                      type: integer
+                      example: 0.00319607
+                    Low:
+                      type: integer
+                      example: 0.00307519
+                    Volume:
+                      type: integer
+                      example: 5127.86994749
+                    Last:
+                      type: integer
+                      example: 0.00307519
+                    BaseVolume:
+                      type: integer
+                      example: 16.09571622
+                    TimeStamp:
+                      type: string
+                      example: "2021-12-17T14:13:04.913"
+                    Bid:
+                      type: integer
+                      example: 0.00308097
+                    Ask:
+                      type: integer
+                      example: 0.00308451
+                    OpenBuyOrders:
+                      type: integer
+                      example: 602
+                    OpenSellOrders:
+                      type: integer
+                      example: 3343
+                    PrevDay:
+                      type: integer
+                      example: 0.00317776
+                    Created:
+                      type: string
+                      example: "2014-02-13T00:00:00"  
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+      x-openapi-router-controller: routes.Sky
