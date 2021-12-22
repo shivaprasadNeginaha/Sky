@@ -7,7 +7,6 @@ requests
 pytest
 
 * module exaplaination
-* 
 __init__.py is the staring point of the program execution
 
 test_sky.py consists of the testcases
